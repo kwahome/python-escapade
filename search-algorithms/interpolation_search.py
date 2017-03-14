@@ -47,21 +47,43 @@
 
 import sys
 
-# Function to get the sum of the integer equivalents of characters making up a string
-# Needed so that the mathematical computations do not throw invalid operation errors
-def strtoint(string):
+#
+# Function to get the distance beween two strings
+# To find the "distance" between two strings, we to look at the first letter that is different between them and assign a numeric value to each,
+# then take the difference.
 
-	if string.isdigit():
-		return int(string)
-
+def strintcomp(fstring,lstring):
+	if fstring.isdigit() and lstring.isdigit() :
+		return int(fstring) - int(lstring)
 	else:
-		s = 0
-		for char in string:
-			if char.isdigit():
-				s += int(char)
-			else:
-				s += ord(char)%96
-	return s
+		number = min(len(fstring),len(lstring))
+		lstring = list(lstring)
+		fstring = list(fstring)
+
+		for char in range(0,number):
+			if(fstring[char] != lstring[char]):
+				return ord(fstring[char]) - ord(lstring[char])
+
+		if len(lstring)>len(fstring):
+			return ord(lstring[number])
+		elif len(fstring)>len(lstring):
+			return ord(fstring[number])
+		else:
+			return 0
+
+# def strtoint(string):
+
+# 	if string.isdigit():
+# 		return int(string)
+
+# 	else:
+# 		s = 0
+# 		for char in string:
+# 			if char.isdigit():
+# 				s += int(char)
+# 			else:
+# 				s += ord(char)%96
+# 	return s
 
 def interpolation_search(search_list,key):
 
@@ -74,8 +96,10 @@ def interpolation_search(search_list,key):
 			return "unsuccessful"
 		
 		else:
+			#strtoint(search_list[Hi]) - strtoint(search_list[Lo]))
+			#strtoint(key) - strtoint(search_list[Lo])
 
-			Mid = Lo + ((Hi - Lo) / (strtoint(search_list[Hi]) - strtoint(search_list[Lo]))) * (strtoint(key) - strtoint(search_list[Lo]))
+			Mid = Lo + ((Hi - Lo) / (strintcomp(search_list[Hi],search_list[Lo]))) * (strintcomp(key,search_list[Lo]))
 
 			if search_list[Mid] == key:
 				return Mid
@@ -132,12 +156,10 @@ def main():
 
 		search_again = raw_input("Do you want to end search? (Yes/No) ")
 
-main()
-
-# if __name__ == "__main__":
+if __name__ == "__main__":
 	
-# 	try:
-# 		sys.exit(main())
+	try:
+		sys.exit(main())
 
-# 	except Exception:
-# 		print "An error has occured"
+	except Exception:
+		print "An error has occured"
