@@ -26,7 +26,7 @@
 
 import sys
 
-def search_function(search_list,key):
+def binary_search(search_list,key):
 
 	found = False
 
@@ -78,7 +78,7 @@ def main():
 		search_key = raw_input("Please enter the item you want to search ")
 		print "Item to search: "+str(search_key)
 
-		search_result = search_function(search_list,search_key)
+		search_result = binary_search(search_list,search_key)
 
 		print "\n"
 
