@@ -46,24 +46,24 @@
 import sys
 import operator
 
-def bubble_sort(items_list,order):
+def bubble_sort(sort_list,order):
 
 	if order == "asc":
 		op = operator.gt
 	elif order == "desc":
 		op = operator.lt
 	
-	for i in range(len(items_list)-1,0,-1):
+	for i in range(len(sort_list)-1,0,-1):
 
 		for j in range (i):
 
-			if op(items_list[j], items_list[j+1]):
+			if op(sort_list[j], sort_list[j+1]):
 
-				temp = items_list[j]
-				items_list[j] = items_list[j+1]
-				items_list[j+1] = temp
+				temp = sort_list[j]
+				sort_list[j] = sort_list[j+1]
+				sort_list[j+1] = temp
 
-	return items_list
+	return sort_list
 
 def main():
 
