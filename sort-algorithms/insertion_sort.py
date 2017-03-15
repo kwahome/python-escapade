@@ -65,24 +65,29 @@ def insertion_sort(sort_list,order):
 	elif order == "desc":
 		op = operator.lt
 
-	#we start loop at second element (index 1) since the first item is already sorted
-	for i in range(1,len(sort_list)):
-		# save the item
-		value = sort_list[i]
+	if len(sort_list) < 2:
+		return sort_list
 
-        # save the current position of the item
-        position = i
+	else:
+		#we start loop at second element (index 1) since the first item is already sorted
+		for i in range(1,len(sort_list)):
+			# save the item
+			value = sort_list[i]
 
-        # while the item is not the first item and is smaller or greater than the item to it's left:
-        while position > 0 and op(sort_list[position-1], value):
-        	# the item overwrites the item to the left
-            sort_list[position] = sort_list[position-1]
-            # And we move on to the next position
-            position = position - 1
+	        # save the current position of the item
+	        position = i
 
-        # When we have found the right position (meaning the while loop is false)
-        # put the item in its correct spot in the list
-        sort_list[position] = value
+	        # while the item is not the first item and is smaller or greater than the item to it's left:
+	        while position > 0 and op(sort_list[position-1], value):
+	        	# the item overwrites the item to the left
+	            sort_list[position] = sort_list[position-1]
+	            # And we move on to the next position
+	            position -= 1
+
+	        # When we have found the right position (meaning the while loop is false)
+	        # put the item in its correct spot in the list
+	        sort_list[position] = value
+	        
 	return sort_list
 
 def main():
