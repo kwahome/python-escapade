@@ -68,15 +68,14 @@ def selection_sort(sort_list,sorting_order):
 	#we start loop at second element (index 1) since the first item is already sorted
 	for i in range(0,len(sort_list)):
 
-		# set current element position as minimum
-		minimum = i
-		
-        # check whether the current element is indeed the minimum
-        for j in range(i+1,len(sort_list)):
-        	if op(sort_list[j], sort_list[minimum]):
-        		minimum = j
+		# set current element position as minimum/maximum
+		position = i
 
-        sort_list[i], sort_list[minimum] = sort_list[minimum], sort_list[i]
+		# check whether the current element is indeed the minimum/maximum
+		for j in range(i+1,len(sort_list)):
+			if op(sort_list[j], sort_list[position]):
+				position = j
+        sort_list[i], sort_list[position] = sort_list[position], sort_list[i]
 	return sort_list
 
 def main():
