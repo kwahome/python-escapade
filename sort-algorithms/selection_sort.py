@@ -61,22 +61,20 @@ import operator
 def selection_sort(sort_list,sorting_order):
 
 	if sorting_order == "asc":
-		op = operator.lt
+		op = min
 	elif sorting_order == "desc":
-		op = operator.gt
+		op = max
 
-	#we start loop at second element (index 1) since the first item is already sorted
-	for i in range(0,len(sort_list)):
+	if len(sort_list) < 2:
+		return sort_list
 
-		# set current element position as minimum/maximum
-		position = i
-
-		# check whether the current element is indeed the minimum/maximum
-		for j in range(i+1,len(sort_list)):
-			if op(sort_list[j], sort_list[position]):
-				position = j
-        sort_list[i], sort_list[position] = sort_list[position], sort_list[i]
-	return sort_list
+	else:
+		for i, item in enumerate(sort_list):
+			# Find the minimum/maximum value
+			minimum = op(range(i,len(sort_list)), key=sort_list.__getitem__)
+			# swap accordingly if minimum/maximum value is in wrong place
+			sort_list[i], sort_list[minimum] = sort_list[minimum], item
+		return sort_list
 
 def main():
 
@@ -114,8 +112,8 @@ def main():
 
 if __name__ == "__main__":
 	
-	try:
-		sys.exit(main())
+	# try:
+	sys.exit(main())
 
-	except Exception:
-		print "An error has occured"
+	# except Exception:
+	# 	print "An error has occured"
