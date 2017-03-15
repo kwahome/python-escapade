@@ -69,24 +69,13 @@ def insertion_sort(sort_list,order):
 		return sort_list
 
 	else:
-		#we start loop at second element (index 1) since the first item is already sorted
 		for i in range(1,len(sort_list)):
-			# save the item
+			position = i-1
 			value = sort_list[i]
-
-	        # save the current position of the item
-	        position = i
-
-	        # while the item is not the first item and is smaller or greater than the item to it's left:
-	        while position > 0 and op(sort_list[position-1], value):
-	        	# the item overwrites the item to the left
-	            sort_list[position] = sort_list[position-1]
-	            # And we move on to the next position
-	            position -= 1
-
-	        # When we have found the right position (meaning the while loop is false)
-	        # put the item in its correct spot in the list
-	        sort_list[position] = value
+			while op(sort_list[position], value) and position >= 0:
+				sort_list[position+1] = sort_list[position]
+				position -= 1
+			sort_list[position+1] = value
 	        
 	return sort_list
 
@@ -126,8 +115,8 @@ def main():
 
 if __name__ == "__main__":
 	
-	try:
-		sys.exit(main())
+	# try:
+	sys.exit(main())
 
-	except Exception:
-		print "An error has occured"
+	# except Exception:
+	# 	print "An error has occured"
