@@ -7,7 +7,7 @@
 # Project: python-escapade
 # Package: sorting-algorithms
 #
-# Merge sort is a sorting technique based on divide and conquer technique. 
+# Merge sort is a sorting algorithm based on divide and conquer technique. 
 # With worst-case time complexity being Ο(n log n), it is one of the most respected algorithms. 
 #
 # Algorithm:
