@@ -58,10 +58,7 @@ def bubble_sort(sort_list,order):
 		for j in range (i):
 
 			if op(sort_list[j], sort_list[j+1]):
-
-				temp = sort_list[j]
-				sort_list[j] = sort_list[j+1]
-				sort_list[j+1] = temp
+				sort_list[j], sort_list[j+1] = sort_list[j+1], sort_list[j]
 
 	return sort_list
 
