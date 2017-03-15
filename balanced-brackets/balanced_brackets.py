@@ -1,3 +1,33 @@
+# -*- coding: utf-8 -*-
+
+#============================================================================================================================================
+#
+# Author: Kelvin Wahome
+# Title: Balanced Brackets Search
+# Project: python-escapade
+# Package: balanced-brackets
+#
+# This is a simple program to check for balanced brackets in a piece of text passed as a file; line by line. 
+#
+# Algorithm:
+# ----------
+#
+# We assume read line from file containing text:
+#
+# begin check_brackets(text)
+#
+#   for all characters of text
+#      if character is in dictionary of brackets
+#         increment bracket count
+#      end if
+#   end for
+#   
+#   return brackets count
+#   
+# end check_brackets
+#
+#============================================================================================================================================
+
 import sys
 from collections import OrderedDict
 
@@ -23,7 +53,7 @@ brackets_count = {
 					'square_bracket_closed':0					
 				}
 
-def check_parenthesis(brackets_dict, brackets_count, input_text):
+def check_brackets(brackets_dict, brackets_count, input_text):
 
 	brackets_dict = OrderedDict(sorted(brackets_dict.items(), key=lambda t: t[0]))
 	brackets_count = OrderedDict(sorted(brackets_count.items(), key=lambda t: t[0]))
@@ -64,7 +94,7 @@ def main(fname):
 			if line.strip() == '':
 				print "[LINE " + str(line_number) + "] : New line"
 			else:
-				results = check_parenthesis(brackets_dict, brackets_count,line)
+				results = check_brackets(brackets_dict, brackets_count,line)
 				
 				input_okay = True
 				report = {}
