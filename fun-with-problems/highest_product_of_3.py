@@ -26,11 +26,24 @@ def highest_product_of_3(int_list):
 	i = 2
 
 	while i < len(int_list):
+		# do we have a new highest product of 3?
+        # it's either the current highest,
+        # or the current times the highest product of two
+        # or the current times the lowest product of two
 		highest_product_of_3 = max(highest_product_of_2 * int_list[i], lowest_product_of_2 * int_list[i], highest_product_of_3)
-		lowest_product_of_2 = min(min_number * int_list[i],lowest_product_of_2)
+
+		# do we have a new highest product of two?
 		highest_product_of_2 = max(max_number * int_list[i],highest_product_of_2)
+		
+		# do we have a new lowest product of two?
+		lowest_product_of_2 = min(min_number * int_list[i],lowest_product_of_2)
+
+		# do we have a new maximum?
 		max_number = max(max_number, int_list[i])
+
+		# do we have a new minimum?
 		min_number = min(min_number, int_list[i])
+		
 		i += 1
 
 	return highest_product_of_3
