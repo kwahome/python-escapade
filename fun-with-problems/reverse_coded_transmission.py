@@ -53,8 +53,8 @@ def main():
 
 if __name__ == "__main__":
 	
-	# try:
-	sys.exit(main())
+	try:
+		sys.exit(main())
 
-	# except Exception:
-	# 	print "An error has occured"
+	except Exception:
+		print "An error has occured"
