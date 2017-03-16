@@ -46,8 +46,8 @@ def merge_ranges(meetings_list):
 		last_merged_meeting_start, last_merged_meeting_end = merged_meetings[-1]
 
 		# if the current and last meetings overlap, use the latest end time
-        if (current_meeting_start <= last_merged_meeting_end):
-            merged_meetings[-1] = (last_merged_meeting_start, max(last_merged_meeting_end, current_meeting_end))
+		if current_meeting_start <= last_merged_meeting_end:
+			merged_meetings[-1] = (last_merged_meeting_start, max(last_merged_meeting_end, current_meeting_end))
 
         # add the current meeting since it doesn't overlap
         else:
