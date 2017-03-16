@@ -49,7 +49,7 @@ def max_profit(stocks):
         # Check to see if there is another equivalent earlier value so as to keep the earliest value
         if profit == (stocks[i] - lowest):
         	highest_index = i
-        	# Also check for the lowest stock value from previous item and return its index
+        	# Also check for the lowest stock value from earlier stocks and return its index
         	lowest_index = stocks[0:i+1].index(lowest)
 
 	results = {0: lowest_index, 1: highest_index, 2: profit}
