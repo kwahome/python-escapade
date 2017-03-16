@@ -36,7 +36,7 @@ def twisted_product(int_list):
     # before it, storing the total product so far each time
 
 	product = 1
-	i=0
+	i = 0
 	while i < len(int_list):
 		result[i] = product
 		product *= int_list[i]
@@ -87,8 +87,8 @@ def main():
 
 if __name__ == "__main__":
 	
-	# try:
-	sys.exit(main())
+	try:
+		sys.exit(main())
 
-	# except Exception:
-	# 	print "An error has occured"
+	except Exception:
+		print "An error has occured"
