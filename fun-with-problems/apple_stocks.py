@@ -26,10 +26,6 @@ import sys
 
 def max_profit(stocks):
 
-	# If the array is empty, we cannot make a profit.
-    if len(stocks) == 0:
-        return 0
-
     # Otherwise, keep track of the best possible profit and the lowest value
     # seen so far.
     profit = 0
@@ -44,52 +40,52 @@ def max_profit(stocks):
         # the new minimum.
         lowest = min(lowest, stocks[i])
 
-        # Take the index of the lowest stock value
-        # Check to see if there is another equivalent earlier lower value so as to keep the earliest value 
-        if lowest == stocks[i] and stocks[i] not in stocks[i:]:
-        	lowest_index = i
-
         # Update the maximum profit to be the larger of the old profit and the
         # profit made by buying at the lowest value and selling at the current
         # price.
         profit = max(profit, stocks[i] - lowest)
 
         # Take the index of the highest stock value
-        # Check to see if there is another equivalent later value so as to keep the earliest value
-        if profit == (stocks[i] - lowest) and stocks[i] not in stocks[:i]:
+        # Check to see if there is another equivalent earlier value so as to keep the earliest value
+        if profit == (stocks[i] - lowest):
         	highest_index = i
+        	# Also check for the lowest stock value from previous item and return its index
+        	lowest_index = stocks[0:i+1].index(lowest)
 
 	results = {0: lowest_index, 1: highest_index, 2: profit}
-
     return results
 
 
 def main():
 
 	apple_stock = []
+	proceed = False
 
 	print "Apple's stocks yesterday"
 	print "------------------------"
 
-	number = input("Enter the count of yesterday's Apple stock prices at different times (e.g. 10) ")
-	print "\n"
+	while proceed is False:
+		number = input("Enter the count of yesterday's Apple stock prices at different times (e.g. 10) ")
+		if number >= 2: proceed = True
+		else: print "The count of stock provided is insufficient to compute a profit. Please enter a number that is not 0 or 1"
+		print "\n"
 
 	for i in range (1,number+1):
-		apple_stock_value = input("Please enter the value of Apple's stock at time "+str(i)+" yesterday ")
+		apple_stock_value = input("Please enter the value of one Apple stock at time "+str(i)+" yesterday ")
 		apple_stock.append(apple_stock_value)
 
 	print "\n"
-	print "Yesterday's Apple stock prices: "
+	print "Yesterday's Apple stock prices in $: "
 	print apple_stock
 	print "\n"
-
-	response = max_profit(apple_stock)
 
 	print "Maximum profit that you could have made:"
 	print "\n"
 
-	print " |-> Buy at time " + str(response.items()[0][1]) + " when the stock was worth $" + str(apple_stock[response.items()[0][1]])
-	print " |-> Sell at time " + str(response.items()[1][1]) + " when the stock was worth $" + str(apple_stock[response.items()[1][1]])
+	response = max_profit(apple_stock)
+
+	print " |-> Buy at time " + str(response.items()[0][1]+1) + " when the stock was worth $" + str(apple_stock[response.items()[0][1]])
+	print " |-> Sell at time " + str(response.items()[1][1]+1) + " when the stock was worth $" + str(apple_stock[response.items()[1][1]])
 	print " |-> Profit made : $" + str(response.items()[2][1])
 	print "\n"
 
