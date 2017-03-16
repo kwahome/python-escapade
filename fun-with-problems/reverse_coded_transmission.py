@@ -22,12 +22,12 @@ import operator
 
 def reverse_words(message):
 
-	message_array = message.split(" ")
+	message = message.split(" ")
 
-	reversed_message = message_array[len(message_array)-1]
+	reversed_message = message[len(message)-1]
 
-	for i in range(len(message_array[:len(message_array)-1]),0,-1):
-		reversed_message =  " ".join([reversed_message, message_array[i-1]])
+	for i in range(len(message[:len(message)-1]),0,-1):
+		reversed_message =  " ".join([reversed_message, message[i-1]])
 
 	return reversed_message.strip()
 
