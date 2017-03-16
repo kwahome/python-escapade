@@ -16,10 +16,24 @@ import sys
 import operator
 
 def highest_product_of_3(int_list):
+	max_number = max(int_list[0], int_list[1])
+	min_number = min(int_list[0], int_list[1])
+	highest_product_of_2 = int_list[0] * int_list[1]
+	lowest_product_of_2 = int_list[0] * int_list[1]
+	highest_product_of_3 = int_list[0] * int_list[1] * int_list[2]
+	
+	# Start with third integer; integer at index 2
+	i = 2
 
-	int_list = merge_sort(int_list,"desc")
+	while i < len(int_list):
+		highest_product_of_3 = max(highest_product_of_2 * int_list[i], lowest_product_of_2 * int_list[i], highest_product_of_3)
+		lowest_product_of_2 = min(min_number * int_list[i],lowest_product_of_2)
+		highest_product_of_2 = max(max_number * int_list[i],highest_product_of_2)
+		max_number = max(max_number, int_list[i])
+		min_number = min(min_number, int_list[i])
+		i += 1
 
-	return int_list[0] * int_list[1] * int_list[2]
+	return highest_product_of_3
 
 def main():
 
@@ -32,7 +46,7 @@ def main():
 	while proceed is False:
 		number = input("Enter the number of integers in the list ")
 		if number > 3: proceed = True
-		else: print "Getting the highest product of 3 integers in a int_list requires at least 3 integers"
+		else: print "Getting the highest product of 3 integers in a list requires at least 3 integers"
 		print "\n"
 
 	for i in range (1,number+1):
