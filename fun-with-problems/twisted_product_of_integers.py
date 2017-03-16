@@ -71,7 +71,7 @@ def main():
 		print "\n"
 
 	for i in range (1,number+1):
-		integers_value = input("Please enter the integer "+str(i)+": ")
+		integers_value = input("Please enter integer "+str(i)+": ")
 		integers.append(integers_value)
 
 	print "\n"
