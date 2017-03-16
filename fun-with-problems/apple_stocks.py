@@ -84,15 +84,15 @@ def main():
 
 	response = max_profit(apple_stock)
 
-	print " |-> Buy at time " + str(response.items()[0][1]+1) + " when the stock was worth $" + str(apple_stock[response.items()[0][1]])
-	print " |-> Sell at time " + str(response.items()[1][1]+1) + " when the stock was worth $" + str(apple_stock[response.items()[1][1]])
+	print " |-> Bought at time " + str(response.items()[0][1]+1) + " when the stock was worth $" + str(apple_stock[response.items()[0][1]])
+	print " |-> Sold at time " + str(response.items()[1][1]+1) + " when the stock was worth $" + str(apple_stock[response.items()[1][1]])
 	print " |-> Profit made : $" + str(response.items()[2][1])
 	print "\n"
 
 if __name__ == "__main__":
 	
-	# try:
-	sys.exit(main())
+	try:
+		sys.exit(main())
 
-	# except Exception:
-	# 	print "An error has occured"
+	except Exception:
+		print "An error has occured"
