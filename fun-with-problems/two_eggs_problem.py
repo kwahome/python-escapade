@@ -22,7 +22,10 @@ import operator
 
 def egg_drop(floors, eggs):
 
-	if floors == 1:
+	if floors is 1:
+		return floors
+		
+	if eggs is 1:
 		return floors
 
 	return floors + eggs
