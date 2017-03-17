@@ -19,17 +19,42 @@
 
 import sys
 import operator
+import math
 
 def egg_drop(floors, eggs):
 
-	if eggs == 1 or floors == 0:
-		return floors
+	assert 1 <= eggs <= floors, 'Building has floors from 1 through {}'.format(floors)
 
-	min_value = float("inf")
+	delta = int (math.ceil((math.sqrt(1 + 8 * floors) -1)/eggs))
 
-	for floor in range(1, floors+1):
-		min_value = min(min_value, 1 + max(egg_drop(eggs-1, floor-1), egg_drop(eggs, floors - floor)))
-	return min_value
+	low, high = 1, delta
+
+	while low < floors:
+		if high >= eggs:
+			print(' |-> First egg broke on floor {}'.format(high))
+
+			for i in range(low, high+1):
+				if i >= eggs:
+					print(' |-> Second egg broke on floor {}'.format(i))
+					if i == 1:
+						raise ValueError("Eggs will always break")
+					else:
+						return i - 1
+		else:
+			delta -= 1
+			low, high = high, high + delta
+			if high > floors:
+				high = floors
+	return floors
+
+	# if eggs == 1 or floors == 0:
+	# 	return floors
+
+	# min_value = float("inf")
+
+	# for floor in range(1, floors+1):
+	# 	min_value = min(min_value, 1 + max(egg_drop(eggs-1, floor-1), egg_drop(eggs, floors - floor)))
+	# return min_value
 
 def main():
 
