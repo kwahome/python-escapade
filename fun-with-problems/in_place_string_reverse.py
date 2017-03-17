@@ -28,7 +28,7 @@ def reverse_string(string):
 		
 		right = -left - 1
 		
-		# swap the front word and back word
+		# swap the front char and back char
 		string[left], string[right] = \
 			string[right], string[left]
 
