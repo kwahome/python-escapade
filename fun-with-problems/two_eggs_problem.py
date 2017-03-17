@@ -22,13 +22,15 @@ import operator
 
 def egg_drop(floors, eggs):
 
-	if floors is 1:
-		return floors
-		
-	if eggs is 1:
+	if eggs == 1 or floors == 0:
 		return floors
 
-	return floors + eggs
+	min_value = float("inf")
+
+	for floor in range(1, floors+1):
+		min_value = min(min_value, 1 + max(egg_drop(eggs-1, floor-1), egg_drop(eggs, floors - floor)))
+	return min_value
+
 def main():
 
 	proceed = False
