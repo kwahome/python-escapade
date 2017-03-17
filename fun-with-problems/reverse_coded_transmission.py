@@ -18,11 +18,10 @@
 #============================================================================================================================================
 
 import sys
-import operator
 
 def reverse_words(message):
 
-	message = message.split(" ")
+	message = message.split(' ')
 
 	# walk towards the middle, from both sides
 	for left in range(len(message) / 2):
@@ -57,8 +56,8 @@ def main():
 
 if __name__ == "__main__":
 	
-	# try:
-	sys.exit(main())
+	try:
+		sys.exit(main())
 
-	# except Exception:
-	# 	print "An error has occured"
+	except Exception:
+		print "An error has occured"
