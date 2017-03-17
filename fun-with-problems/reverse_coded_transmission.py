@@ -24,12 +24,16 @@ def reverse_words(message):
 
 	message = message.split(" ")
 
-	reversed_message = message[len(message)-1]
+	# walk towards the middle, from both sides
+	for left in range(len(message) / 2):
+		
+		right = -left - 1
+		
+		# swap the front word and back word
+		message[left], message[right] = \
+			message[right], message[left]
 
-	for i in range(len(message[:len(message)-1]),0,-1):
-		reversed_message =  " ".join([reversed_message, message[i-1]])
-
-	return reversed_message.strip()
+	return ' '.join(message)
 
 def main():
 
@@ -53,8 +57,8 @@ def main():
 
 if __name__ == "__main__":
 	
-	try:
-		sys.exit(main())
+	# try:
+	sys.exit(main())
 
-	except Exception:
-		print "An error has occured"
+	# except Exception:
+	# 	print "An error has occured"
