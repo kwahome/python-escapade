@@ -49,13 +49,14 @@ def check_brackets(string_input, brackets_array):
 
 	for char in string_input:
 		if char in brackets_array:
+			char_index = brackets_array.index(char)
 			# All opening brackets are at even positions in the brackets_array
-			if brackets_array.index(char)%2 is 0:
+			if char_index % 2 is 0:
 				# if encountered character is an opening bracket, check for matching closing bracket in balanced_array
-				if brackets_array[brackets_array.index(char)+1] in balanced_array:
+				if brackets_array[char_index+1] in balanced_array:
 					# if a matching closing bracket is found in balanced_array,
 					# remove it as it matches the opening bracket encountered
-					balanced_array.remove(brackets_array[brackets_array.index(char)+1])				
+					balanced_array.remove(brackets_array[char_index+1])				
 				else:
 					# if no matching closing bracket is found in balanced_array
 					# add the encountered opening bracket in our string into balanced_array
@@ -65,10 +66,10 @@ def check_brackets(string_input, brackets_array):
 			# all closing brackets are on odd positions
 			else:
 				# check to see if there is a matching opening bracket in the balanced array
-				if brackets_array[brackets_array.index(char)-1] in balanced_array:
+				if brackets_array[char_index-1] in balanced_array:
 					# if a matching opening bracket is found in balanced_array
 					# remove it as it matches with the closing bracket encountered
-					balanced_array.remove(brackets_array[brackets_array.index(char)-1])
+					balanced_array.remove(brackets_array[char_index-1])
 				else:
 					# if no matching opening bracket is found in balanced_array
 					# add the encountered closing bracket in our string into balanced_array
