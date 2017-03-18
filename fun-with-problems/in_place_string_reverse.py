@@ -10,7 +10,7 @@
 #
 # Write a function to reverse a string in-place 
 #
-# Since strings in Python are immutable ↴ , first convert the string into a list of characters, do the in-place reversal on that list, and 
+# Since strings in Python are immutable, first convert the string into a list of characters, do the in-place reversal on that list, and 
 # re-join that list into a string before returning it. This isn't technically "in-place" and the list of characters will cost O(n)O(n)O(n) 
 # additional space, but it's a reasonable way to stay within the spirit of the challenge. If you're comfortable coding in a language with 
 # mutable strings, that'd be even better!  
