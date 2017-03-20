@@ -27,6 +27,7 @@ import sys
 def find_palindrome_permutation(string):
 	
 	frequency = {}
+	palindrome = {}
 
 	for char in string:
 		if char in frequency:
