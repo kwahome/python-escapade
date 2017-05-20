@@ -43,4 +43,4 @@ if __name__ == "__main__":
 	except Exception:
 		print "An error has occured"
 		print "To run this program, the number of Fibonacci numbers to be generated should be passed as a parameter"
-		print "For instance, python weather fibonacci.py 5"
+		print "For instance, python fibonacci.py 5"
